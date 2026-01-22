@@ -1,0 +1,16 @@
+# Data directories
+data/raw/
+data/staging/
+data/curated/
+data/db/
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
