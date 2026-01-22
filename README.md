@@ -9,20 +9,23 @@ Intermediate datasets are stored as CSV files, and final outputs are written to 
 
 ## Project Structure
 
+```text
 space-data-pipeline/
 ├── data/
-│   ├── raw/        # original source CSV files
-│   ├── staging/    # schema-aligned intermediate data
-│   ├── curated/    # cleaned and validated datasets
+│   ├── raw/        # Original source CSV files
+│   ├── staging/    # Schema-aligned intermediate data
+│   ├── curated/    # Cleaned and validated datasets
 │   └── db/         # SQLite database output
 ├── etl/
-│   ├── extract/    # data extraction logic
-│   ├── transform/  # schema and semantic transformations
-│   ├── load/       # database loading logic
+│   ├── extract/    # Data extraction logic
+│   ├── transform/  # Schema and semantic transformations
+│   ├── load/       # Database loading logic
 │   └── pipeline.py # ETL orchestration entry point
 ├── notebooks/
 │   └── exploration.ipynb
-└── README.md
+├── .gitignore
+├── README.md
+└── requirements.txt
 
 ## Data Flow (ETL)
 
