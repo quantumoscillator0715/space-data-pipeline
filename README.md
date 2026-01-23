@@ -92,6 +92,7 @@ After a successful pipeline run, the following artifacts are produced:
 
 ###Exoplanet Mass Versus Radius
 ![Discoveries](plots/mass_vs_radius.png)
+One extreme mass outlier is visible (~350 Earth masses). This may indicate a unit inconsistency or catalog error. The point is retained to preserve raw data fidelity.
 
 ## Design Decisions
 
