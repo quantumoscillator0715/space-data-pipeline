@@ -23,6 +23,7 @@ space-data-pipeline/
 │   └── pipeline.py # ETL orchestration entry point
 ├── notebooks/
 │   └── exploration.ipynb
+├── plots/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -79,6 +80,18 @@ After a successful pipeline run, the following artifacts are produced:
 
 - `data/db/exoplanets.sqlite`  
   SQLite database containing the `exoplanets` table.
+
+###Exoplanet Discoveries Over Time
+![Discoveries](plots/discoveries_by_year.png)
+
+###Exoplanet Size Class Counts
+![Discoveries](plots/counts_by_size_class.png)
+
+###Exoplanet Radius Distribution
+![Discoveries](plots/radius_distribution.png)
+
+###Exoplanet Mass Versus Radius
+![Discoveries](plots/mass_vs_radius.png)
 
 ## Design Decisions
 
