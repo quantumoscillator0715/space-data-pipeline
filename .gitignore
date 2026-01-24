@@ -1,5 +1,4 @@
-# Data directories
-data/raw/
+# Data outputs
 data/staging/
 data/curated/
 data/db/
