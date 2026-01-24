@@ -1,3 +1,4 @@
+import logging
 from __future__ import annotations
 
 from pathlib import Path
@@ -15,6 +16,11 @@ RAW_DIR = DATA_DIR / "raw"
 STAGING_DIR = DATA_DIR / "staging"
 CURATED_DIR = DATA_DIR / "curated"
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 def run_pipeline() -> None:
     """
@@ -29,22 +35,22 @@ def run_pipeline() -> None:
         d.mkdir(parents=True, exist_ok=True)
 
     run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-    print(f"[ETL] Starting run_id={run_id}")
-    print(f"[ETL] raw={RAW_DIR}")
-    print(f"[ETL] staging={STAGING_DIR}")
-    print(f"[ETL] curated={CURATED_DIR}")
+    logger.info(f"[ETL] Starting run_id={run_id}")
+    logger.info(f"[ETL] raw={RAW_DIR}")
+    logger.info(f"[ETL] staging={STAGING_DIR}")
+    logger.info(f"[ETL] curated={CURATED_DIR}")
 
     # 1) EXTRACT
     raw_paths = extract_raw(raw_dir=RAW_DIR)
-    print(f"[ETL] Extracted: {raw_paths}")
+    logger.info(f"[ETL] Extracted: {raw_paths}")
 
     # 2) TRANSFORM: schema (staging)
     staging_paths = to_staging(raw_paths=raw_paths, staging_dir=STAGING_DIR)
-    print(f"[ETL] Staging: {staging_paths}")
+    logger.info(f"[ETL] Staging: {staging_paths}")
 
     # 3) TRANSFORM: semantic (curated)
     curated_paths = to_curated(staging_paths=staging_paths, curated_dir=CURATED_DIR)
-    print(f"[ETL] Curated: {curated_paths}")
+    logger.info(f"[ETL] Curated: {curated_paths}")
 
     # 4) LOAD
     DB_DIR = DATA_DIR / "db"
@@ -60,7 +66,7 @@ def run_pipeline() -> None:
     else:
         print("[LOAD] No curated files to load yet.")
 
-    print(f"[ETL] Done run_id={run_id}")
+    logger.info(f"[ETL] Done run_id={run_id}")
 
 
 if __name__ == "__main__":
